@@ -1,0 +1,4 @@
+power_state:
+  mode: reboot
+  message: Rebooting after initial config
+# Keep an extra new line with no spaces for merging files together

@@ -1,0 +1,4 @@
+#cloud-config
+runcmd:
+  - echo 'This instance was provisioned with the .io PS Instance Terraform module.' >> /etc/motd
+# Keep an extra new line with no spaces for merging files together

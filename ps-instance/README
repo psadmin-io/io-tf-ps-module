@@ -1,0 +1,3 @@
+# SPPS Instance Module
+
+This module will create an instance on OCI for SPPS with specific settings to best work with other SPPS instances.

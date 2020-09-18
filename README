@@ -1,1 +1,7 @@
 # Terraform Module for a PeopleSoft Instance
+
+A terraform module to create an OCI instance to run PeopleSoft. 
+
+* The latest Oracle Linux 7.8
+* Attached block storage (size configurable)
+* Optional public IP address
