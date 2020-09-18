@@ -1,7 +1,7 @@
 name                    = "psdmo"
 region                  = "us-ashburn-1"
 compartment_ocid        = "ocid1.compartment.xxx"
-subnet                  = "App Subnet"
+subnet_id               = "oci1.subnet.xxx"
 availability_domain     = 1
 fault_domain            = 1
 backup_policy           = "silver"

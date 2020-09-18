@@ -1,15 +1,20 @@
-data "oci_core_vcns" "vcn" {
-  compartment_id = var.compartment_ocid
-}
+# data "oci_core_vcns" "vcn" {
+#   compartment_id = var.compartment_ocid
+# }
 
-data "oci_core_subnets" "subnet" {
-  compartment_id = var.compartment_ocid
-  vcn_id         = data.oci_core_vcns.vcn.virtual_networks[0]["id"]
+# data "oci_core_subnets" "subnet" {
+#   compartment_id = var.compartment_ocid
+#   vcn_id         = data.oci_core_vcns.vcn.virtual_networks[0]["id"]
 
-  filter {
-    name   = "display_name"
-    values = ["${var.subnet}"]
-  }
+#   filter {
+#     name   = "display_name"
+#     values = ["${var.subnet}"]
+#   }
+# }
+
+data "oci_core_subnet" "subnet" {
+    #Required
+    subnet_id = var.subnet_id
 }
 
 data "oci_identity_availability_domains" "ads" {

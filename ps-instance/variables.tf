@@ -1,7 +1,7 @@
 # Required Variables
 variable "region" {}
 variable "compartment_ocid" {}
-variable "subnet" {}
+variable "subnet_id" {}
 variable "availability_domain" {}
 variable "fault_domain" {}
 variable "backup_policy" {}
