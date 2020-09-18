@@ -1,0 +1,11 @@
+# Required Variables
+variable "region" {}
+variable "compartment_ocid" {}
+variable "subnet" {}
+variable "availability_domain" {}
+variable "fault_domain" {}
+variable "backup_policy" {}
+variable "shape" {}
+variable "instance_number" {}
+variable "name" {}
+variable "ssh_public_key" {}
