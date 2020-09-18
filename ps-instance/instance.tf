@@ -7,7 +7,7 @@ resource "oci_core_instance" "psinstance" {
     
     #Required
     availability_domain = data.oci_identity_availability_domains.ads[var.availability_domain]
-    fault_domain        = var.fds[var.fault_domain]
+    fault_domain        = var.fds[var.fault_domain`]
     compartment_id      = var.compartment_ocid
     shape               = var.shape
 
