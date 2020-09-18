@@ -12,3 +12,6 @@ variable "storage" {}
 variable "enable_public_ip" {}
 variable "preserve_boot_volume" {}
 variable "ssh_public_key" {}
+
+# Optional Variables if using Cloud Shell
+variable "tenancy_ocid" {}
