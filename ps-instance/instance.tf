@@ -150,22 +150,25 @@ resource "oci_core_volume_attachment" "psinstance_storage_attachment" {
     ]
   }
   # unmount and disconnect on destroy
-  provisioner "remote-exec" {
-    when       = destroy
-    on_failure = continue
-    inline = [
-      "set -x",
-      "export DEVICE_ID=ip-${self.ipv4}:${self.port}-iscsi-${self.iqn}-lun-1",
-      "export UUID=$(sudo /sbin/blkid -s UUID -o value /dev/disk/by-path/$${DEVICE_ID}-part1)",
-      # "export UUID=$(sudo blkid | grep /dev/disk/by-path/$${DEVICE_ID}-part1 | awk '{print $2}')",
-      "sudo umount ${var.volume_mount_directory}",
-      "if [[ $UUID ]] ; then",
-      "  sudo sed -i.bak '\\@^UUID='$${UUID}'@d' /etc/fstab",
-      "fi",
-      "sudo iscsiadm -m node -T ${self.iqn} -p ${self.ipv4}:${self.port} -u",
-      "sudo iscsiadm -m node -o delete -T ${self.iqn} -p ${self.ipv4}:${self.port}",
-    ]
-  }
+  # New Terraform versions error with destroy-time provisions that use connection information 
+  #    without "self." references. This provision was referencing the instance to get the 
+  #    private_ip, so leaving this off for now.
+  # provisioner "remote-exec" {
+  #   when       = destroy
+  #   on_failure = continue
+  #   inline = [
+  #     "set -x",
+  #     "export DEVICE_ID=ip-${self.ipv4}:${self.port}-iscsi-${self.iqn}-lun-1",
+  #     "export UUID=$(sudo /sbin/blkid -s UUID -o value /dev/disk/by-path/$${DEVICE_ID}-part1)",
+  #     # "export UUID=$(sudo blkid | grep /dev/disk/by-path/$${DEVICE_ID}-part1 | awk '{print $2}')",
+  #     "sudo umount ${var.volume_mount_directory}",
+  #     "if [[ $UUID ]] ; then",
+  #     "  sudo sed -i.bak '\\@^UUID='$${UUID}'@d' /etc/fstab",
+  #     "fi",
+  #     "sudo iscsiadm -m node -T ${self.iqn} -p ${self.ipv4}:${self.port} -u",
+  #     "sudo iscsiadm -m node -o delete -T ${self.iqn} -p ${self.ipv4}:${self.port}",
+  #   ]
+  # }
 }
 
 resource "oci_core_volume_backup_policy_assignment" "psinstance_storage" {
