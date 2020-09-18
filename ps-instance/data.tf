@@ -13,7 +13,7 @@ data "oci_core_subnets" "subnet" {
 }
 
 data "oci_identity_availability_domains" "ads" {
-  compartment_id = var.tenancy
+  compartment_id = var.tenancy_ocid
 }
 
 data "oci_core_volume_backup_policies" "silver" {
