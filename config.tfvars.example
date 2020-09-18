@@ -3,6 +3,7 @@ region                  = "us-ashburn-1"
 compartment_ocid        = "ocid1.compartment.xxx"
 subnet                  = "App Subnet"
 availability_domain     = 1
+fault_domain            = 1
 backup_policy           = "silver"
 shape                   = "VM.Standard2.1"
 instance_number         = "01"
