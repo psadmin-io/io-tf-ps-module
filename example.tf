@@ -6,6 +6,7 @@ module "ps-instance" {
   compartment_ocid     = var.compartment_ocid
   subnet               = var.subnet
   availability_domain  = var.availability_domain
+  fault_domain         = var.fault_domain
   backup_policy        = var.backup_policy
   shape                = var.shape
   instance_number      = var.instance_number
