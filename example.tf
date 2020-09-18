@@ -2,6 +2,7 @@ module "ps-instance" {
   source = "./ps-instance"
 
   name                 = var.name
+  tenancy_ocid         = var.tenancy_ocid
   region               = var.region
   compartment_ocid     = var.compartment_ocid
   subnet               = var.subnet

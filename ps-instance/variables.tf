@@ -9,7 +9,7 @@ variable "shape" {}
 variable "instance_number" {}
 variable "name" {}
 variable "ssh_public_key" {}
-
+variable "tenancy_ocid" {}
 
 # Variables with Defaults
 variable "fds" {
