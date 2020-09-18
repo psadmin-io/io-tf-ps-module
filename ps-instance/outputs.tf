@@ -3,7 +3,7 @@ output "oci_compartment_name" {
 }
 
 output "oci_subnet" {
-  value = data.oci_core_subnets.subnet.id
+  value = data.oci_core_subnet.subnet.id
 }
 
 output "instance_private_ip" {

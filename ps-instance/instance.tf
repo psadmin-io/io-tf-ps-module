@@ -18,7 +18,7 @@ resource "oci_core_instance" "psinstance" {
     #Optional
     create_vnic_details {
         #Required
-        subnet_id = data.oci_core_subnets.subnet.subnets[0].id
+        subnet_id = data.oci_core_subnet.subnet.id
 
         #Optional
         assign_public_ip = var.enable_public_ip ? true : false
