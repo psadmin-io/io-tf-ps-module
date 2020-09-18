@@ -5,7 +5,7 @@ module "ps-instance" {
   tenancy_ocid         = var.tenancy_ocid
   region               = var.region
   compartment_ocid     = var.compartment_ocid
-  subnet               = var.subnet
+  subnet_id            = var.subnet_id
   availability_domain  = var.availability_domain
   fault_domain         = var.fault_domain
   backup_policy        = var.backup_policy
