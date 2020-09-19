@@ -6,6 +6,10 @@ output "oci_subnet" {
   value = data.oci_core_subnet.subnet.id
 }
 
+output "availability_domain" {
+  value = data.oci_identity_availability_domains.ads.availability_domains[var.availability_domain].name
+}
+
 output "instance_private_ip" {
   value = oci_core_instance.psinstance.*.private_ip
 }
