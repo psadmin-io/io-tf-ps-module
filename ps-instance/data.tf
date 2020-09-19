@@ -17,9 +17,9 @@ data "oci_core_subnet" "subnet" {
     subnet_id = var.subnet_id
 }
 
-# data "oci_identity_availability_domains" "ads" {
-#   compartment_id = var.tenancy_ocid
-# }
+data "oci_identity_availability_domains" "ads" {
+  compartment_id = var.tenancy_ocid
+}
 
 data "oci_core_volume_backup_policies" "silver" {
   filter {
