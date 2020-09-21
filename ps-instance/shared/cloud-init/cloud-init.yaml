@@ -28,8 +28,9 @@ write_files:
     path: /tmp/psft_customizations.yaml
 
 runcmd:
-  # workaround for iscsi until it's added to ioco
-  - [sleep 120] 
+  - [ sh, -c, 'yum install oci-utils -y' ]
+  - [ sh, -c, 'sudo systemctl enable ocid.service']
+  - [ sh, -c, 'sudo systemctl start ocid.service']
   # manual install python dependencies until published in pip
   - [ sh, -c, 'python3 -m pip install docopt requests' ]
   # clone git repo and checkout branch

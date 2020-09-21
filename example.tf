@@ -17,3 +17,7 @@ module "ps-instance" {
   preserve_boot_volume = var.preserve_boot_volume
   ssh_public_key       = var.ssh_public_key
 }
+
+output "public_ip" {
+  value = module.ps-instance.instance_public_ip
+}
