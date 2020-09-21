@@ -54,13 +54,6 @@ variable "instance_user" {
 variable "ps_user_data" {
     default = ["shared/cloud-init/cloud-init.yaml"] #, "shared/cloud-init/storage.yaml", "shared/cloud-init/reboot.yaml"]
 }
-
 variable "enable_public_ip" {
-  default = false
-}
-variable "dns" {
-  default = "sppserp.org"
-}
-variable "enable_public_dns" {
   default = false
 }

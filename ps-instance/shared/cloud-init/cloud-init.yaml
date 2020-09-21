@@ -26,7 +26,7 @@ write_files:
           "--install-packages": null,
           "--logs": "/u01/app/ioco/logs",
           "--make-file-system": null,
-          "--mount": true,
+          "--mount": null,
           "--mount-path": "/cm_psft_dpks",
           "--nfs-host": 10.10.1.4,
           "--secret-id": "ocid.something.123131231",
