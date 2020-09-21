@@ -1,4 +1,5 @@
 name                    = "psdmo"
+tenancy_ocid            = "ocid1.tenancy.xxx"
 region                  = "us-ashburn-1"
 compartment_ocid        = "ocid1.compartment.xxx"
 subnet_id               = "oci1.subnet.xxx"
@@ -8,6 +9,6 @@ backup_policy           = "silver"
 shape                   = "VM.Standard2.1"
 instance_number         = "01"
 storage                 = "100"
-enable_public_ip        = True
-preserve_boot_volume    = False
+enable_public_ip        = true
+preserve_boot_volume    = false
 ssh_public_key          = "ssh-rsa xxx"
