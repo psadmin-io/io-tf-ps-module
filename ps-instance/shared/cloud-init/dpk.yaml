@@ -1,1 +1,1 @@
-  - [ sh, -c, 'sudo ioco dpk deploy' ]
+  - [ sh, -c, 'ioco dpk deploy' ]
