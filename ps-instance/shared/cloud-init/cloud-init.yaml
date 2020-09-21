@@ -1,7 +1,9 @@
 #cloud-config
 # Keep an extra new line with no spaces for merging files together
-# packages:
-#   - git
+packages:
+  - python-oci-cli 
+  - git
+
 
 write_files:
 # conf.json
@@ -28,15 +30,14 @@ write_files:
     path: /tmp/psft_customizations.yaml
 
 runcmd:
-  - [ sh, -c, 'yum install oci-utils python-oci-cli git -y' ]
-  - [ sh, -c, 'systemctl enable ocid.service']
-  - [ sh, -c, 'systemctl start ocid.service']
+  - systemctl enable ocid.service
+  - systemctl start ocid.service
   # manual install python dependencies until published in pip
-  - [ sh, -c, 'python3 -m pip install docopt requests' ]
+  - python3 -m pip install docopt requests
   # clone git repo and checkout branch
-  - [ sh, -c, 'git clone https://test.mgmt.new.oraclevcn.com/root/ioCloudOps.git /tmp/ioCloudOps' ]
-  - [ sh, -c, 'git --git-dir /tmp/ioCloudOps checkout iscsi' ]
+  - git clone https://test.mgmt.new.oraclevcn.com/root/ioCloudOps.git /tmp/ioCloudOps
+  # - [ sh, -c, 'git --git-dir /tmp/ioCloudOps checkout iscsi' ]
   # setup block storage, mount dpk files repo, and deploy dpk
   # - [ sh, -c, 'python3 /tmp/ioCloudOps/ioco oci block --make-file-system --mount' ]
-  - [ sh, -c, 'python3 /tmp/ioCloudOps/ioco cm attach-dpk-files' ]
-  - [ sh, -c, 'python3 /tmp/ioCloudOps/ioco dpk deploy' ]
+  # - [ sh, -c, 'python3 /tmp/ioCloudOps/ioco cm attach-dpk-files' ]
+  # - [ sh, -c, 'python3 /tmp/ioCloudOps/ioco dpk deploy' ]
