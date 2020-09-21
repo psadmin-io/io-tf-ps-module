@@ -1,0 +1,20 @@
+name                    = "psdmo"
+region                  = "us-ashburn-1"
+#ioCloudOps
+compartment_ocid        = "ocid1.compartment.xxx"
+#mgmt
+subnet_id               = "ocid1.subnet.xxx"
+availability_domain     = 1
+fault_domain            = 1
+backup_policy           = "silver"
+shape                   = "VM.Standard2.1"
+instance_number         = "01"
+storage                 = "150"
+enable_public_ip        = true
+preserve_boot_volume    = false
+# ~/.ssh/cmtrial.pub
+ssh_public_key          = "ssh-rsa xxx"
+# psaoci
+tenancy_ocid            = "ocid1.tenancy.xxx"
+
+ioco_actions            = [ 'cloud-init', 'oci', 'cm', 'dpk' ]

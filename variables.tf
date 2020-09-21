@@ -12,6 +12,7 @@ variable "storage" {}
 variable "enable_public_ip" {}
 variable "preserve_boot_volume" {}
 variable "ssh_public_key" {}
+variable "ioco_actions" {}
 
 # Optional Variables if using Cloud Shell
 variable "tenancy_ocid" {}
