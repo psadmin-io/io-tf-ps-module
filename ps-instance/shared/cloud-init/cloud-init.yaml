@@ -5,13 +5,13 @@ write_files:
 # conf.json
   - content: |
       { 
-          --cust-yaml": "/tmp/psft_customizations.yaml","
+          "--cust-yaml": "/tmp/psft_customizations.yaml",
           "--dpk-platform": "linux",
           "--dpk-source": "CM",
           "--dpk-type": "FSCM",
           "--export": "/psftcm.mgmt.new.oraclevcn.com-export",
           "--mount-path": "/cm_psft_dpks",
-          "--nfs-host": 10.10.1.4,
+          "--nfs-host": "10.10.1.4",
           "--verbose": true
       }                                 
     path: /tmp/conf.json
@@ -26,16 +26,18 @@ write_files:
     path: /tmp/psft_customizations.yaml
 
 runcmd:
-  - yum install git python-oci-cli -y
-  - systemctl enable ocid.service
-  - systemctl start ocid.service
+  - [ sh, -c, 'yum install -y git python-oci-cli' ]
+  # setup iscsi block
+  - [ sh, -c, 'systemctl enable ocid.service' ]
+  - [ sh, -c, 'systemctl start ocid.service' ]
+  - [ sh, -c, 'systemctl status ocid.service' ]
   # manual install python dependencies until published in pip
-  - python3 -m pip install docopt requests
+  - [ sh, -c, 'python3 -m pip install docopt requests' ]
   # clone git repo and checkout branch
-  - git config http.sslVerify false --global
-  - git clone https://test.mgmt.new.oraclevcn.com/root/ioCloudOps.git /tmp/ioCloudOps
+  - [ sh, -c, 'git config --global http.sslVerify false' ]
+  - [ sh, -c, 'git clone https://test.mgmt.new.oraclevcn.com/root/ioCloudOps.git /tmp/ioCloudOps' ]
   # - [ sh, -c, 'git --git-dir /tmp/ioCloudOps checkout iscsi' ]
   # setup block storage, mount dpk files repo, and deploy dpk
   # - [ sh, -c, 'python3 /tmp/ioCloudOps/ioco oci block --make-file-system --mount' ]
-  # - [ sh, -c, 'python3 /tmp/ioCloudOps/ioco cm attach-dpk-files' ]
-  # - [ sh, -c, 'python3 /tmp/ioCloudOps/ioco dpk deploy' ]
+  # - [ sh, -c, 'cd /tmp/ioCloudOps; python3 -m ioco cm attach-dpk-files --conf=/tmp/conf.json' ]
+  # - [ sh, -c, 'cd /tmp/ioCloudOps; python3 -m ioco dpk deploy --conf=/tmp/conf.json' ]
