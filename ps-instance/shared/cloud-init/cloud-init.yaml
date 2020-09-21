@@ -1,7 +1,7 @@
 #cloud-config
 # Keep an extra new line with no spaces for merging files together
-packages:
-  - git
+# packages:
+#   - git
 
 write_files:
 # conf.json
@@ -28,7 +28,7 @@ write_files:
     path: /tmp/psft_customizations.yaml
 
 runcmd:
-  - [ sh, -c, 'yum install oci-utils python-oci-cli -y' ]
+  - [ sh, -c, 'yum install oci-utils python-oci-cli git -y' ]
   - [ sh, -c, 'systemctl enable ocid.service']
   - [ sh, -c, 'systemctl start ocid.service']
   # manual install python dependencies until published in pip
