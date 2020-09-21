@@ -28,7 +28,7 @@ write_files:
     path: /tmp/psft_customizations.yaml
 
 runcmd:
-  - [ sh, -c, 'yum install oci-utils -y' ]
+  - [ sh, -c, 'yum install oci-utils python-oci-cli -y' ]
   - [ sh, -c, 'sudo systemctl enable ocid.service']
   - [ sh, -c, 'sudo systemctl start ocid.service']
   # manual install python dependencies until published in pip
