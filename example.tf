@@ -1,6 +1,6 @@
 module "ps-instance" {
-  # source = "./ps-instance"
-  source = "github.com/psadmin-io/io-tf-ps-module"
+  source = "./ps-instance"
+  # source = "github.com/psadmin-io/io-tf-ps-module"
 
   name                 = var.name
   tenancy_ocid         = var.tenancy_ocid
