@@ -17,4 +17,4 @@ ssh_public_key          = "ssh-rsa xxx"
 # psaoci
 tenancy_ocid            = "ocid1.tenancy.xxx"
 
-ioco_actions            = [ 'cloud-init', 'oci', 'cm', 'dpk' ]
+ioco_actions            = [ "cloud-init", "oci?", "cm", "dpk" ]
