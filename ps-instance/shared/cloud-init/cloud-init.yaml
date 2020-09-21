@@ -80,7 +80,8 @@ write_files:
     path: /u01/app/ioco/dpk/psft_customizations.yaml
 
 runcmd:
-# manual install python dependencies until published in pip
+  - [sleep 120] # workaround for iscsi until it's added to ioco
+  # manual install python dependencies until published in pip
   - [ sh, -c, 'python3 -m pip install docopt requests' ]
   # clone git repo and checkout branch
   - [ sh, -c, 'git clone https://github.com/psadmin-io/ioCloudOps.git /tmp/ioCloudOps' ]
