@@ -34,8 +34,8 @@ runcmd:
   # manual install python dependencies until published in pip
   - [ sh, -c, 'python3 -m pip install docopt requests' ]
   # clone git repo and checkout branch
-  - [ sh, -c, 'git config --global http.sslVerify false' ]
-  - [ sh, -c, 'git clone https://test.mgmt.new.oraclevcn.com/root/ioCloudOps.git /tmp/ioCloudOps' ]
+  # - [ sh, -c, 'git config --global http.sslVerify false' ]
+  - [ sh, -c, 'git config --global http.sslVerify false; git clone https://test.mgmt.new.oraclevcn.com/root/ioCloudOps.git /tmp/ioCloudOps' ]
   # - [ sh, -c, 'git --git-dir /tmp/ioCloudOps checkout iscsi' ]
   # setup block storage, mount dpk files repo, and deploy dpk
   # - [ sh, -c, 'python3 /tmp/ioCloudOps/ioco oci block --make-file-system --mount' ]
