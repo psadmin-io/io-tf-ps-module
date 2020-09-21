@@ -1,5 +1,6 @@
 name                    = "psdmo"
-tenancy_ocid            = "ocid1.tenancy.xxx"
+# Fill out here or using the TF_VAR_tenancy_ocid environment variable
+# tenancy_ocid            = "ocid1.tenancy.xxx"
 region                  = "us-ashburn-1"
 compartment_ocid        = "ocid1.compartment.xxx"
 subnet_id               = "oci1.subnet.xxx"

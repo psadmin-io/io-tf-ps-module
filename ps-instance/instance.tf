@@ -107,7 +107,7 @@ resource "oci_core_volume_attachment" "psinstance_storage_attachment" {
 
   connection {
     type        = "ssh"
-    host        = element(oci_core_instance.psinstance.*.private_ip, count.index)
+    host        = var.enable_public_ip ? element(oci_core_instance.psinstance.*.public_ip, count.index) : element(oci_core_instance.psinstance.*.private_ip, count.index)
     user        = "opc"
     private_key = tls_private_key.public_private_key_pair.private_key_pem
   }
