@@ -39,7 +39,7 @@ resource "oci_core_instance" "psinstance" {
     
     metadata = {
       ssh_authorized_keys = join("\n", [var.ssh_public_key, tls_private_key.public_private_key_pair.public_key_openssh])
-      user_data           = "${base64encode(join("", [for file in var.ps_user_data : file("${path.module}/${file}")]))}"
+      user_data           = "${base64encode(join("", [for file in var.ps_user_data : file("${path.module}/shared/cloud-init/${file}.yaml")]))}"
     }
 }
 

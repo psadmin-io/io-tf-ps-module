@@ -1,0 +1,1 @@
+  - [ sh, -c, 'sudo ioco oci block --make-file-system --mount --block-disk=/dev/sdb' ]

@@ -57,3 +57,8 @@ variable "ps_user_data" {
 variable "enable_public_ip" {
   default = false
 }
+
+variable "ioco" {
+  type = list
+  default = [ "oci" ]
+}

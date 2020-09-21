@@ -5,6 +5,7 @@ write_files:
 # conf.json
   - content: |
       { 
+          "--block-disk": "/dev/sdb",
           "--cust-yaml": "/tmp/psft_customizations.yaml",
           "--dpk-platform": "linux",
           "--dpk-source": "CM",
@@ -13,7 +14,7 @@ write_files:
           "--mount-path": "/cm_psft_dpks",
           "--nfs-host": "10.10.1.4",
           "--verbose": true
-      }                                 
+      }
     path: /tmp/conf.json
 # psft_customization.yaml
   - content: |
@@ -33,11 +34,8 @@ runcmd:
   - [ sh, -c, 'systemctl status ocid.service' ]
   # manual install python dependencies until published in pip
   - [ sh, -c, 'python3 -m pip install docopt requests' ]
-  # clone git repo and checkout branch
-  # - [ sh, -c, 'git config --global http.sslVerify false' ]
-  - [ sh, -c, 'git config --global http.sslVerify false; git clone https://test.mgmt.new.oraclevcn.com/root/ioCloudOps.git /tmp/ioCloudOps' ]
-  # - [ sh, -c, 'git --git-dir /tmp/ioCloudOps checkout iscsi' ]
-  # setup block storage, mount dpk files repo, and deploy dpk
-  # - [ sh, -c, 'python3 /tmp/ioCloudOps/ioco oci block --make-file-system --mount' ]
-  # - [ sh, -c, 'cd /tmp/ioCloudOps; python3 -m ioco cm attach-dpk-files --conf=/tmp/conf.json' ]
-  # - [ sh, -c, 'cd /tmp/ioCloudOps; python3 -m ioco dpk deploy --conf=/tmp/conf.json' ]
+  # we have our repo private in github, so hosting internal on gitlab that doesn't have ssl working right 
+  - [ sh, -c, 'sudo git config --global http.sslVerify false' ]
+  - [ sh, -c, 'sudo git clone https://test.mgmt.new.oraclevcn.com/root/iocloudops.git /tmp/ioCloudOps' ]
+  # local install until it is published
+  - [ sh, -c, 'sudo python3 -m pip install /tmp/ioCloudOps' ]

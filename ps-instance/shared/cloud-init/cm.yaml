@@ -1,0 +1,1 @@
+  - [ sh, -c, 'sudo ioco cm attach-dpk-files' ]
