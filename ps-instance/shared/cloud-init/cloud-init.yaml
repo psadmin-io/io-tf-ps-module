@@ -37,9 +37,9 @@ runcmd:
   - [ sh, -c, 'systemctl start ocid.service' ]
   - [ sh, -c, 'systemctl status ocid.service' ]
   # manual install python dependencies until published in pip
-  - [ sh, -c, 'python3 -m pip install docopt requests' ]
+  - [ sh, -c, 'sudo python3 -m pip install docopt requests' ]
   # we have our repo private in github, so hosting internal on gitlab that doesn't have ssl working right 
-  - [ sh, -c, 'git config --global http.sslVerify false' ]
-  - [ sh, -c, 'git clone https://test.mgmt.new.oraclevcn.com/root/iocloudops.git /tmp/ioCloudOps' ]
+  - [ sh, -c, 'sudo git config --global http.sslVerify false' ]
+  - [ sh, -c, 'sudo git clone https://test.mgmt.new.oraclevcn.com/root/iocloudops.git /tmp/ioCloudOps' ]
   # local install until it is published
-  - [ sh, -c, 'python3 -m pip install /tmp/ioCloudOps' ]
+  - [ sh, -c, 'sudo python3 -m pip install /tmp/ioCloudOps' ]
