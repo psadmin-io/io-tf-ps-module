@@ -15,7 +15,7 @@ write_files:
           "--nfs-host": "10.10.1.4",
           "--verbose": true
       }
-    path: /tmp/conf.json
+    path: /u01/app/ioco/conf.json
   # psft_customization.yaml
   - content: |
       ---
