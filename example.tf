@@ -16,7 +16,7 @@ module "ps-instance" {
   enable_public_ip     = var.enable_public_ip
   preserve_boot_volume = var.preserve_boot_volume
   ssh_public_key       = var.ssh_public_key
-  ps_user_data         = var.ioco_actions
+  ioco_actions         = var.ioco_actions
 }
 
 output "public_ip" {
