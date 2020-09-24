@@ -1,8 +1,6 @@
 name                    = "psdmo"
 region                  = "us-ashburn-1"
-#ioCloudOps
 compartment_ocid        = "ocid1.compartment.xxx"
-#mgmt
 subnet_id               = "ocid1.subnet.xxx"
 availability_domain     = 1
 fault_domain            = 1
@@ -12,9 +10,15 @@ instance_number         = "01"
 storage                 = "150"
 enable_public_ip        = true
 preserve_boot_volume    = false
-# ~/.ssh/cmtrial.pub
 ssh_public_key          = "ssh-rsa xxx"
-# psaoci
+
+# Optional if TF_VAR_tenancy_ocid env variable is set
 tenancy_ocid            = "ocid1.tenancy.xxx"
 
-ioco_actions            = [ "cloud-init", "oci?", "cm", "dpk" ]
+# Action for ioco: 
+#   cloud-init is required and first
+#   oci will mount block storage
+#   cm will attach Cloud Manager repository
+#   dpk will run the PeopleSoft dpk
+#   configuration options for ioco are set in config.json
+ioco_actions            = [ "cloud-init", "oci", "cm", "dpk" ]

@@ -1,0 +1,16 @@
+write_files:
+  # conf.json
+  - content: |
+      { 
+          "--block-disk": "/dev/sdb",
+          "--cust-yaml": "/tmp/psft_customizations.yaml",
+          "--dpk-platform": "linux",
+          "--dpk-source": "CM",
+          "--dpk-type": "FSCM",
+          "--export": "/psftcm.mgmt.new.oraclevcn.com-export",
+          "--mount-path": "/cm_psft_dpks",
+          "--nfs-host": "10.10.1.4",
+          "--verbose": true
+      }
+
+    path: /tmp/conf.json

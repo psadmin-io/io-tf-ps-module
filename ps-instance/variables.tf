@@ -52,13 +52,14 @@ variable "instance_user" {
   default = "opc"
 }
 variable "ps_user_data" {
-    default = ["shared/cloud-init/cloud-init.yaml"] #, "shared/cloud-init/storage.yaml", "shared/cloud-init/reboot.yaml"]
+    #default = ["shared/cloud-init/cloud-init.yaml"] #, "shared/cloud-init/storage.yaml", "shared/cloud-init/reboot.yaml"]
+    default = join("", [ file("${path.module}/../conf.yaml"), file("${path.module}/../psft_customization.yaml"), [for file in var.ioco_actions : file("${path.module}/shared/cloud-init/${file}.yaml"])
 }
 variable "enable_public_ip" {
   default = false
 }
 
-variable "ioco" {
+variable "ioco_actions" {
   type = list
   default = [ "oci" ]
 }
