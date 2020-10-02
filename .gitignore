@@ -2,3 +2,4 @@
 *.tfsate*
 *.tfvars
 *.zip
+*.tfstate*

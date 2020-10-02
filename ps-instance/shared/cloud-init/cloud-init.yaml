@@ -5,15 +5,18 @@ write_files:
   # conf.json
   - content: |
       { 
+          "--dpk-patch": "03",          
+          "--dpk-platform": "linux",    
+          "--dpk-source": "CM",         
+          "--dpk-type": "tools",        
+          "--dpk-version": "858",   
           "--block-disk": "/dev/sdb",
-          "--cust-yaml": "/tmp/psft_customizations.yaml",
-          "--dpk-platform": "linux",
-          "--dpk-source": "CM",
-          "--dpk-type": "FSCM",
+          "db_host": "fulltier",        
+          "opr_id": "VP1",              
+          "opr_pwd": "VP1",   
           "--export": "/psftcm.mgmt.new.oraclevcn.com-export",
           "--mount-path": "/cm_psft_dpks",
-          "--nfs-host": "10.10.1.4",
-          "--verbose": true
+          "--nfs-host": "10.10.1.4"
       }
     path: /u01/app/ioco/conf.json
   # psft_customization.yaml
@@ -31,15 +34,16 @@ write_files:
     path: /etc/sudoers.d/secure-path
 
 runcmd:
-  - [ sh, -c, 'yum install -y git python-oci-cli' ]
+  - [ sh, -c, 'yum install -y git python-oci-cli tree' ]
+  - [ sh, -c, 'systemctl disable firewalld' ]
+  - [ sh, -c, 'systemctl stop firewalld' ]
   # setup iscsi block
   - [ sh, -c, 'systemctl enable ocid.service' ]
   - [ sh, -c, 'systemctl start ocid.service' ]
   - [ sh, -c, 'systemctl status ocid.service' ]
-  # manual install python dependencies until published in pip
-  - [ sh, -c, 'sudo python3 -m pip install docopt requests' ]
-  # we have our repo private in github, so hosting internal on gitlab that doesn't have ssl working right 
-  - [ sh, -c, 'sudo git config --global http.sslVerify false' ]
-  - [ sh, -c, 'sudo git clone https://test.mgmt.new.oraclevcn.com/root/iocloudops.git /tmp/ioCloudOps' ]
   # local install until it is published
+  - [ sh, -c, 'sudo git clone https://github.com/psadmin-io/ioco.git /tmp/ioCloudOps' ]
   - [ sh, -c, 'sudo python3 -m pip install /tmp/ioCloudOps' ]
+  - [ sh, -c, 'sudo ioco oci block --make-file-system --mount --block-disk=/dev/sdb' ]
+  - [ sh, -c, 'sudo ioco cm attach-dpk-files --nfs-host=10.10.1.4 --export=/psftcm.mgmt.new.oraclevcn.com-export' ]
+  - [ sh, -c, 'sudo ioco dpk deploy' ]

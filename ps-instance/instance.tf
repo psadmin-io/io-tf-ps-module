@@ -92,6 +92,7 @@ resource "oci_core_volume" "psinstance_storage" {
   #Optional
   display_name = "${var.name}${count.index + 1} storage"
   size_in_gbs = var.storage
+  vpus_per_gb = 20
 }
 
 resource "oci_core_volume_attachment" "psinstance_storage_attachment" {
